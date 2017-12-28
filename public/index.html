@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html ng-app = "myApp">
+<head>
+	<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<link rel = "stylesheet" href = "style.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src = "controller.js"></script>
+	<title>Roster App</title>
+</head>
+<body>
+	<div class = "container" ng-controller = "AppCtrl">
+    	<h1>Team Roster</h1>
+    	<table class = "table">
+      		<thead>
+        		<tr>
+          			<th>Name</th>         
+          			<th>Number</th>
+          			<th>Position</th>
+          			<th>Actions</th>
+          			<th>&nbsp;</th>
+        		</tr>
+      		</thead>
+      		<tbody>
+        		<tr>
+        			<td><input class = "form-control" ng-model = "player.name"></td>
+          			<td><input class = "form-control" ng-model = "player.number"></td>
+          			<td><input class = "form-control" ng-model = "player.position"></td>
+          			<td><button class = "btn btn-primary" ng-click = "add()">&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;</button></td>
+          			<td><button class = "btn btn-info" ng-click = "update()">Update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button class = "btn btn-warning" ng-click="deselect()">&nbsp;&nbsp;Clear&nbsp;&nbsp;</button></td>
+        		</tr>
+        		<tr ng-repeat = "player in playerroster">
+        			<td>{{player.name}}</td>
+          			<td>{{player.number}}</td>
+          			<td>{{player.position}}</td>
+          			<td><button class = "btn btn-danger" ng-click = "remove(player._id)">Remove</button></td>
+          			<td><button class = "btn btn-warning" ng-click = "edit(player._id)">&nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;</button></td>
+        		</tr>
+      		</tbody>
+    	</table>
+	</div>
+</body>
+</html>
